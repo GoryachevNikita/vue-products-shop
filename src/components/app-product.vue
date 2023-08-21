@@ -1,17 +1,13 @@
 <template>
    <div class="product">
       {{ product.title }}
-
    </div>
 </template>
 
 <script setup lang="ts">
-import { IProduct } from './app-products.vue'
+import {Product} from "../api";
 
-const props = defineProps<{
-   product: IProduct
-}>()
-
+defineProps<{ product: Product }>()
 </script>
 
 <style lang="scss" scoped>
