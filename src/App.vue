@@ -55,7 +55,7 @@ const searchText = ref<string>("");
    max-width: 1350px;
    margin: 0 auto;
    padding: 0 15px;
-   border: 1px solid #000;
+
 }
 
 .header {

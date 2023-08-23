@@ -2,7 +2,7 @@
    <div class="products">
       <app-products-categories @select="handleCategorySelect" :categories="categories" class="products__categories" />
       <div class="grid">
-         <app-product v-for="(product) in products" :key="product.id" :product="product" />
+         <app-product v-for="product in products" :key="product.id" :product="product" />
       </div>
    </div>
 </template>
@@ -22,8 +22,15 @@ const handleCategorySelect = async (category: string) => {
 };
 
 onMounted(() => {
-   getProducts({ limit: 8 }).then(data => products.value = data);
-   getAllCategories().then(data => categories.value = data);
+   getProducts({ limit: 8 }).then(data => {
+      products.value = data
+      console.log(products.value);
+   });
+   getAllCategories().then(data => {
+      categories.value = data
+      console.log(categories.value);
+   });
+
 })
 </script>
 
@@ -40,6 +47,6 @@ onMounted(() => {
    grid-template-columns: repeat(auto-fit, 312px);
    grid-auto-rows: 500px;
    gap: 24px;
-   border: 1px solid #000;
+
 }
 </style>
