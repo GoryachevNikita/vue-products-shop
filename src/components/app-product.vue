@@ -5,7 +5,7 @@
 </template>
 
 <script setup lang="ts">
-import {Product} from "../api";
+import { Product } from "@/types";
 
 defineProps<{ product: Product }>()
 </script>

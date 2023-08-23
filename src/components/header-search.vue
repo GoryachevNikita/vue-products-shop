@@ -9,9 +9,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 
-const props = defineProps<{
-   modelValue: string;
-}>();
+defineProps<{ modelValue: string; }>();
 
 const emits = defineEmits<{
    (eventName: 'update:modelValue', value: string): void
@@ -42,7 +40,7 @@ const emits = defineEmits<{
          display: inline-block;
          width: 25px;
          height: 25px;
-         background-image: url(../img/header__search-svg.svg);
+         background-image: url(../assets/img/header__search-svg.svg);
          background-repeat: no-repeat;
       }
 
