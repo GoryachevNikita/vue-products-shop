@@ -1,6 +1,7 @@
 <template>
    <div class="products">
-      <app-products-categories @select="handleCategorySelect" :categories="categories" class="products__categories" />
+      <app-products-categories @select="handleCategorySelect" @all-products="handleAllProductsSelect"
+         :categories="categories" class="products__categories" />
       <div class="grid">
          <app-product v-for="product in products" :key="product.id" :product="product" />
       </div>
@@ -20,6 +21,9 @@ const categories = ref([] as string[]);
 const handleCategorySelect = async (category: string) => {
    products.value = await getProductsInCategory(category, { limit: 8 });
 };
+const handleAllProductsSelect = async () => {
+   products.value = await getProducts({ limit: 8 });
+}
 
 onMounted(() => {
    getProducts({ limit: 8 }).then(data => {

@@ -2,7 +2,7 @@
    <nav class="categories">
       <ul class="categories__list">
          <li class="categories__item active">
-            <a href="#">All Products</a>
+            <a href="#" @click.prevent="emit('allProducts')">All Products</a>
          </li>
          <li v-for="category in categories" :key="category" class="categories__item">
             <a href="#" @click.prevent="emit('select', category)">
@@ -19,7 +19,10 @@ import { textFirstCharCapitalize } from '@/service-functions'
 
 defineProps<{ categories: string[] }>()
 
-const emit = defineEmits<{ select: [value: string] }>()
+const emit = defineEmits<{
+   (e: 'select', value: string): void,
+   (e: 'allProducts'): void,
+}>()
 
 
 
