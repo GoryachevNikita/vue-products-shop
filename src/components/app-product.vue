@@ -21,14 +21,13 @@ defineProps<{ product: Product }>()
 .product {
    display: flex;
    flex-direction: column;
-   border: 1px solid #000;
    padding: 0 10px;
-   width: 312px;
-   height: 500px;
+   gap: 20px;
+   line-height: 1.375rem;
 
    &__image {
       position: relative;
-      flex: 1 1 100%;
+      flex: 1 1 auto;
 
       img {
          position: absolute;
@@ -37,20 +36,26 @@ defineProps<{ product: Product }>()
          width: 100%;
          height: 100%;
          object-fit: contain;
+         padding: 20px;
       }
    }
 
    &__info {
       display: flex;
       flex-wrap: wrap;
-      font-size: 1rem;
-      line-height: 135.5%;
       justify-content: space-between;
+      gap: 15px;
    }
 
    &__name {
-      flex: 0 0 100%;
-      text-align: center;
+      flex: 1 1 100%;
+      height: 2.75rem;
+      overflow: hidden;
+      text-overflow: ellipsis;
+   }
+
+   &__category {
+      color: rgba($color: #000000, $alpha: 0.5);
    }
 }
 </style>
