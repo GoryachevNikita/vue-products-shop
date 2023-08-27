@@ -1,6 +1,6 @@
 <template>
    <div class="products">
-      <app-products-categories @select="handleCategorySelect" @all-products="handleAllProductsSelect"
+      <app-products-categories @select="handleCategorySelect" @all-products="handleAllProductsSelect" @sort="handleSort"
          :categories="categories" class="products__categories" />
       <div class="grid">
          <app-product v-for="product in products" :key="product.id" :product="product" />
@@ -17,12 +17,29 @@ import { Product } from "@/types";
 
 const products = ref([] as Product[]);
 const categories = ref([] as string[]);
+const currentCategory = ref('All Products' as string);
 
 const handleCategorySelect = async (category: string) => {
    products.value = await getProductsInCategory(category, { limit: 8 });
+   currentCategory.value = category;
 };
 const handleAllProductsSelect = async () => {
    products.value = await getProducts({ limit: 8 });
+   currentCategory.value = 'All Products';
+}
+
+const handleSort = async (sortType: string) => {
+   if (currentCategory.value === 'All Products') {
+      products.value = await getProducts({ limit: 8, sort: sortType });
+      console.log(sortType);
+      console.log(currentCategory);
+      console.log(products.value);
+   } else {
+      products.value = await getProductsInCategory(currentCategory.value, { limit: 8, sort: sortType });
+      console.log(sortType);
+      console.log(currentCategory);
+      console.log(products.value);
+   }
 }
 
 onMounted(() => {

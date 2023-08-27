@@ -10,19 +10,27 @@
             </a>
          </li>
       </ul>
-      <a class="categories__sort-btn">По Возрастанию</a>
+      <select class="categories__sort-btn" @change="emit('sort', ($event.target as HTMLSelectElement).value)">
+         <option selected disabled>Сортировать</option>
+         <option value="asc">По возрастанию</option>
+         <option value="desc">По убыванию</option>
+      </select>
    </nav>
 </template>
 
 <script setup lang="ts">
 import { textFirstCharCapitalize } from '@/service-functions'
+import { ref } from 'vue'
 
 defineProps<{ categories: string[] }>()
 
 const emit = defineEmits<{
    (e: 'select', value: string): void,
    (e: 'allProducts'): void,
+   (e: 'sort', value: string): void,
 }>()
+
+
 
 
 
@@ -54,10 +62,18 @@ const emit = defineEmits<{
    }
 
    &__sort-btn {
-      display: inline-block;
+      font-family: inherit;
+      font-weight: inherit;
+      font-size: inherit;
       margin: 0px 20px 0px 50px;
       cursor: pointer;
       white-space: nowrap;
+
+      option {
+         font-family: inherit;
+         font-weight: inherit;
+         font-size: inherit;
+      }
    }
 }
 
