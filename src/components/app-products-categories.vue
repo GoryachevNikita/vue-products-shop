@@ -1,11 +1,12 @@
 <template>
    <nav class="categories">
       <ul class="categories__list">
-         <li class="categories__item active">
-            <a href="#" @click.prevent="emit('allProducts')">All Products</a>
+         <li class="categories__item">
+            <a href="#" @click.prevent="handleAllProductsClick" :class="{ active: isAllProductsActive }">All Products</a>
          </li>
-         <li v-for="category in categories" :key="category" class="categories__item">
-            <a href="#" @click.prevent="emit('select', category)">
+         <li v-for="(category, index) in categories" :key="category" class="categories__item">
+            <a href="#" @click.prevent="handleCategoryClick(category, index)"
+               :class="{ active: index == selectedCategoryIndex }">
                {{ textFirstCharCapitalize(category) }}
             </a>
          </li>
@@ -30,7 +31,20 @@ const emit = defineEmits<{
    (e: 'sort', value: string): void,
 }>()
 
+//Functional of toogling an Active class for category item
+const isAllProductsActive = ref(true as boolean);
+const selectedCategoryIndex = ref<number>();
 
+const handleCategoryClick = (category: string, index: number) => {
+   emit('select', category);
+   selectedCategoryIndex.value = index;
+   isAllProductsActive.value = false;
+}
+const handleAllProductsClick = () => {
+   emit('allProducts');
+   isAllProductsActive.value = true;
+   selectedCategoryIndex.value = undefined;
+}
 
 
 
@@ -56,7 +70,7 @@ const emit = defineEmits<{
 
       a {
          &:hover {
-            color: #000;
+            color: #FF6F61;
          }
       }
    }

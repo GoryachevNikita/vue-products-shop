@@ -117,6 +117,7 @@ const searchText = ref<string>("");
       display: flex;
       justify-content: space-between;
       align-items: center;
+      cursor: pointer;
 
       @media only screen and (max-width: 992px) {
          justify-content: start;
