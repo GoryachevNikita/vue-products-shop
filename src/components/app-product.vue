@@ -25,6 +25,10 @@ defineProps<{ product: Product }>()
    gap: 20px;
    line-height: 1.375rem;
 
+   &:hover {
+      color: #FF6F61;
+   }
+
    &__image {
       position: relative;
       flex: 1 1 auto;
