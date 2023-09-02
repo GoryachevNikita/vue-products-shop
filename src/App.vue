@@ -3,27 +3,25 @@
       <header class="header">
          <div class="container">
             <div class="header__wrapper">
-               <div class="header__title">
+               <router-link to="/" class="header__title">
                   <span>CORAL</span>
-               </div>
+               </router-link>
                <header-search v-model="searchText" class="header__search"></header-search>
                <div class="header__btns">
                   <a class="header__btn header__btn_like">
                      <img src="./assets/img/header__like-icon.svg" alt="like-icon">
                      <span>Избранное</span>
                   </a>
-                  <a class="header__btn header__btn_bag">
+                  <router-link to="/busket" class="header__btn header__btn_bag">
                      <img src="./assets/img/header__bag-icon.svg" alt="bag-icon">
                      <span>Корзина</span>
-                  </a>
+                  </router-link>
                </div>
             </div>
          </div>
       </header>
       <main class="main">
-         <div class="container">
-            <app-products class="main__products"></app-products>
-         </div>
+         <router-view />
       </main>
       <footer class="footer">
          <div class="container">fOOTER</div>

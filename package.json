@@ -12,7 +12,8 @@
     "@types/lodash.debounce": "^4.0.7",
     "axios": "^1.4.0",
     "lodash": "^4.0.8",
-    "vue": "^3.3.4"
+    "vue": "^3.3.4",
+    "vue-router": "^4.2.4"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.2.3",

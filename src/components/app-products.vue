@@ -1,9 +1,11 @@
 <template>
-   <div class="products">
-      <app-products-categories @select="handleCategorySelect" @all-products="handleAllProductsSelect" @sort="handleSort"
-         :categories="categories" class="products__categories" />
-      <div class="grid">
-         <app-product v-for="product in products" :key="product.id" :product="product" />
+   <div class="container">
+      <div class="products">
+         <app-products-categories @select="handleCategorySelect" @all-products="handleAllProductsSelect" @sort="handleSort"
+            :categories="categories" class="products__categories" />
+         <div class="grid">
+            <app-product v-for="product in products" :key="product.id" :product="product" />
+         </div>
       </div>
    </div>
 </template>
