@@ -12,7 +12,7 @@
                      <img src="./assets/img/header__like-icon.svg" alt="like-icon">
                      <span>Избранное</span>
                   </a>
-                  <router-link to="/busket" class="header__btn header__btn_bag">
+                  <router-link to="/basket" class="header__btn header__btn_bag">
                      <img src="./assets/img/header__bag-icon.svg" alt="bag-icon">
                      <span>Корзина</span>
                   </router-link>
@@ -20,8 +20,8 @@
             </div>
          </div>
       </header>
-      <main class="main">
-         <router-view />
+      <main class="main" :class="{ 'grey-background': router.currentRoute.value.fullPath == '/basket' }">
+         <div class="container"><router-view /></div>
       </main>
       <footer class="footer">
          <div class="container">fOOTER</div>
@@ -33,12 +33,13 @@
 import headerSearch from './components/header-search.vue';
 import appProducts from './components/app-products.vue'
 import { ref } from 'vue';
+import router from './router/router';
 
-const searchText = ref<string>("");
+const searchText = ref("" as string);
 
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .wrapper {
    min-height: 100vh;
    overflow: hidden;
@@ -49,11 +50,10 @@ const searchText = ref<string>("");
 
 .container {
    width: 100vw;
-
    max-width: 1350px;
    margin: 0 auto;
    padding: 0 15px;
-
+   border: 1px solid #000;
 }
 
 .header {
@@ -137,5 +137,9 @@ const searchText = ref<string>("");
       }
    }
 
+}
+
+.grey-background {
+   background-color: #f6f6f9;
 }
 </style>

@@ -10,7 +10,7 @@ export default createRouter({
          component: appProducts,
       },
       {
-         path: '/busket',
+         path: '/basket',
          component: appBasket,
       }
    ]
